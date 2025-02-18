@@ -8,23 +8,44 @@ namespace PO1_Encapsulation
 {
     public class Personnage
     {
-        int pointDeVie;
-        int attaque;
+            private int pointDeVie;
+            private int puissanceAttaque;
+            private int pointDeVieMaximal;
 
-        public int PointDeVie {
-            get
-            {
-                return pointDeVie;
-            }
+        public int PointDeVie { get => pointDeVie;
             set
             {
-                if (value <= 0)
+                if (value < 0)
                 {
-                    
+                    pointDeVie = 0;
                 }
-            } 
+                else if (value > PointDeVieMaximal)
+                {
+                    pointDeVie = PointDeVieMaximal;
+                }
+                else
+                {
+                    pointDeVie = value;
+                }
+            }
+        }
+        public int PuissanceAttaque { get => puissanceAttaque; set => puissanceAttaque = value; }
+
+        public bool EstMort
+        {
+            get
+            {
+                if (pointDeVie == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
 
-        public int Attaque { get => attaque; set => attaque = value; }
+        public int PointDeVieMaximal { get => pointDeVieMaximal; set => pointDeVieMaximal = value; }
     }
 }
